@@ -1,0 +1,82 @@
+{% extends 'base_html.html' %}
+{% load staticfiles %}
+{% block tittle %}宠物列表 - 宠物在线交易网{% endblock %}
+{% block custom_bread %}
+    <section>
+        <div class="wp">
+            <ul  class="crumbs">
+                <li><a href="/index/">首页</a>></li>
+                <li>宠物</li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block custom_contend %}
+    <section>
+	<div class="wp">
+		<div class="list" style="margin-top:0;">
+			<div class="left layout">
+				<div class="head">
+					<ul class="tab_header">
+						<li {% ifequal sort 'price' %} class="active"{% endifequal %}><a href="?sort=price">价格</a></li>
+						<li {% ifequal sort 'buy_people_num' %} class="active"{% endifequal %}><a href="?sort=buy_people_num">购买人数</a></li>
+					</ul>
+				</div>
+                <div id="inWindow">
+                    <div class="tab_cont " id="content">
+					<div class="group_list">
+                            {% for pet in all_pet.object_list %}
+                            <div class="box">
+                                <a href="{% url 'pet:pet_detai' pet.id %}">
+                                    <img width="280" height="350" class="scrollLoading" src="{{ MEDIA_URL }}{{ pet.pet_image }}"/>
+                                </a>
+                                <div class="des">
+                                    <a href="{% url 'pet:pet_detai' pet.id %}">
+                                        <h2>{{ pet.name }}</h2>
+                                    </a>
+                                    <span class="fl">价格：<i class="key">{{ pet.price }}</i></span>
+                                    <span class="fr">购买人数：{{ pet.buy_people_num }}&nbsp;&nbsp;</span>
+                                </div>
+                                <div class="bottom">
+                                    <a href="{% url 'pet:pet_detai' pet.id %}"><span class="fl">{{ pet.pet_org.name }}</span></a>
+                                    <span class="star fr  notlogin
+                                        " data-favid="15">
+                                        1
+                                    </span>
+                                </div>
+                            </div>
+                            {% endfor %}
+					</div>
+                    <div class="pageturn">
+                        <ul class="pagelist">
+                            {% if all_pet.has_previous %}
+                                <li class="long">
+                                    <a href="?{{ all_pet.previous_page_number.querystring }}" class="prev">上一页</a>
+                                </li>
+                            {% endif %}
+                            {% for page in all_pet.pages %}
+                            {% if page %}
+                            {% ifequal page all_pet.number %}
+                                <li class="active"><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                            {% else %}
+                                <li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>
+                            {% endifequal %}
+                            {% else %}
+                                <li class="none"><a href="?{{ page.querystring }}">...</a></li>
+                            {% endif %}
+                            {% endfor %}
+                            {% if all_pet.has_next %}
+                                <li class="long"><a href="?{{ all_pet.next_page_number.querystring }}">下一页</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+				</div>
+                </div>
+			</div>
+
+		</div>
+	</div>
+</section>
+{% endblock %}
+

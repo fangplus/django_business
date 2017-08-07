@@ -1,0 +1,67 @@
+{% extends 'base_html.html' %}
+{% load staticfiles %}
+{% block tittle %}宠物详情 - 宠物在线交易网{% endblock %}
+{% block custom_bread %}
+    <section>
+	<div class="wp">
+		<div class="crumbs">
+			<ul>
+				<li><a href="index.html">首页</a>></li>
+                <li><a href="course-list.html">宠物</a>></li>
+				<li>宠物详情</li>
+			</ul>
+		</div>
+	</div>
+</section>
+{% endblock %}
+
+{% block custom_contend %}
+<section>
+	<div class="wp">
+		<div class="groupPurchase_detail detail">
+			<div class="toppro">
+				<div class="left">
+					<div class="picbox">
+						<div class="tb-booth tb-pic">
+							<img width="440" height="445" src="{{ MEDIA_URL }}{{ pet.pet_image }}" class="jqzoom" />
+						</div>
+					</div>
+					<div class="des">
+						<h1 title="">{{ pet.name }}</h1>
+						<span class="key">{{ pet.des }}</span>
+						<div class="prize">
+							<span class="fr">购买人数：{{ pet.buy_people_num }}</span>
+						</div>
+						<ul class="parameter">
+							<li><span class="pram word3">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄：</span><span>{{ pet.age }}</span></li>
+						</ul>
+						<div class="btns">
+							<div class="btn colectgroupbtn"  id="jsLeftBtn">
+                                  收藏
+                            </div>
+                                <div class="buy btn"><a style="color: white" href="course-video.html">购买</a></div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+    <section>
+	<div class="wp">
+		<div class="list groupPurchase_detail_pro">
+			<div class="left layout">
+				<div class="head">
+					<ul class="tab_header">
+						<li class="active">宠物详情</li>
+					</ul>
+				</div>
+				<div class="tab_cont tab_cont1">
+					<p>&nbsp; &nbsp; {{ pet.name }}</p><p><img src="{{ MEDIA_URL }}{{ pet.pet_image }}"/> </p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

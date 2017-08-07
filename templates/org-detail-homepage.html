@@ -1,0 +1,58 @@
+{% extends 'org_base.html' %}
+{% block tittle %}店铺首页{% endblock %}
+
+{% block right_form %}
+    <div class="right companycenter layout grouping" >
+		<div class="head">
+			<h1>全部宠物</h1>
+{#			<a class="green fr more" href="org-detail-course.html">查看更多  >  </a>#}
+		</div>
+		<div class="brief group_list">
+
+                {% for pet in all_pet %}
+                <div class="module1_5 box">
+                    <a href="course-detail.html"><img width="214" src="{{ MEDIA_URL }}{{ pet.pet_image }}"/></a>
+                    <div class="des">
+                        <a href="course-detail.html"><h2>{{ pet.name }}</h2></a>
+                        <span class="fl">年龄：<i class="key">{{ pet.age }}</i></span>
+                        <span class="fr">购买人数：{{ pet.buy_people_num }}</span>
+                    </div>
+                    <div class="bottom">
+                        <span class="fl">{{ pet.pet_org.name }}</span>
+                         <span class="star fr  notlogin
+                            " data-favid="13"  data-fav-type="4">
+                            0
+                        </span>
+                    </div>
+                </div>
+                {% endfor %}
+		</div>
+	</div>
+    <div class="right companycenter layout" >
+    <div class="head">
+        <h1>店铺老板</h1>
+{#        <a class="green fr more" href="org-detail-teachers.html">查看更多  >  </a>#}
+    </div>
+    {% for boss in all_boss %}
+    <div class="diarys">
+        <div class="module5 share company-diary-box" style="padding:10px 0;">
+            <div class="left">
+                <img class="pic" src="{{ MEDIA_URL }}{{ boss.boss_image }}"/>
+                <p>昵称：{{ boss.name }}</p>
+                <span class="fl">开店年龄：<i class="key">{{ boss.work_year }}</i></span>
+                <span class="fr">点击人数：{{ boss.click_nums }}</span>
+                <span class="fr">收藏人数：{{ boss.favorite_nums }}</span>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+    <div class="right companycenter layout" >
+        <div class="head">
+            <h1>店铺介绍</h1>
+        </div>
+        <div class="des">
+            <p class="des">{{ pet_org.des }}</p>
+        </div>
+    </div>
+{% endblock %}
