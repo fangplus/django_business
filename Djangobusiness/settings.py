@@ -95,7 +95,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Dbusiness',
         'USER': 'root',
-        'PASSWORD': 'fangplus2190',
+        'PASSWORD': '***',
         'HOST': 'localhost'
     }
 }
@@ -144,14 +144,10 @@ STATICFILES_DIRS = (
 
 EMAIL_HOST = "smtp.sina.com"
 EMAIL_PORT = 25
-#EMAIL_HOST_USER = "projectsedu@sina.com"
-#EMAIL_HOST_PASSWORD = "admin123"
-#EMAIL_USE_TLS = False
-#EMAIL_FROM = "projectsedu@sina.com"
-EMAIL_HOST_USER = "fangjiaplus@sina.com"
-EMAIL_HOST_PASSWORD = "fxhc123fjb582152"
+EMAIL_HOST_USER = "***" #所使用的邮箱
+EMAIL_HOST_PASSWORD = "***" #邮箱密码
 EMAIL_USE_TLS = False
-EMAIL_FROM = "fangjiaplus@sina.com"
+EMAIL_FROM = "***" #所使用的邮箱
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
